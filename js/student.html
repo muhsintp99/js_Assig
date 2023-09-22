@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assigment 4</title>
+</head>
+
+<body>
+    <div class="co" style="text-align: center; padding: 10px;">
+        <h1>Student Grade Calculation</h1>
+        <p> Build student grade calculation system</p>
+    </div>
+
+    <div class="container">
+
+        <div class="box">
+            <div class="box1 box1-collect">
+                <h5>Mathematics</h5>
+                <input type="number" id="Math" placeholder=" Mathematics"><br>
+            </div>
+            <div class="box1">
+                <h5>Computer Science</h5>
+                <input type="number" id="CS" placeholder="CS"><br>
+            </div>
+            <div class="box1">
+                <h5>Physics</h5>
+                <input type="number" id="Phy" placeholder="Physics"><br>
+            </div>
+            <div class="box1">
+                <h5>Chemistry</h5>
+                <input type="number" id="Che" placeholder="Chemistry"><br>
+            </div>
+            <div class="box1">
+                <h5>Statistics</h5>
+                <input type="number" id="Stat" placeholder="Statistics"><br>
+            </div>
+            <div class="box1 box1-button">
+                <button onclick="getres()">Submit</button>
+            </div>
+
+        </div>
+        <div class="box box-result"
+        style="background: transparent;">
+            <table>
+                <tr>
+                    <td>Total Mark</td>
+                    <td>500</td>
+                </tr>
+                <tr>
+                    <td>Obtained Mark</td>
+                    <td id="obt"></td>
+                </tr>
+                <tr>
+                    <td>Average</td>
+                    <td id="avg"></td>
+                </tr>
+                <tr>
+                    <td>Percentage</td>
+                    <td id="per"></td>
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td id="grand"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <Style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(-135deg, #c850c0,#4158d0);
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+
+        }
+
+        .box {
+            width: 100%;
+            margin: 20px;
+            padding: 20px;
+            /* border: 2px solid black; */
+            border-radius: 5px;
+            background: white
+        }
+        
+
+        .box1 {
+            margin: 20px;
+            
+        }
+
+        h5 {
+            font-size: large;
+            text-transform: uppercase;
+        }
+
+        input {
+            margin-top: 10px;
+            height: 30px;
+            width: 100%;
+            outline: none;
+            /* border-radius: 8px; */
+            border: none;
+            background: transparent;
+            border-bottom: 1px solid silver;
+
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        input[type=number] {-moz-appearance: textfield;
+        }
+
+        input::placeholder {
+            text-align: right;
+        }
+
+        .box1-button {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        button {
+            margin: 20px;
+            width: 200px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(-135deg, #c850c0,#4158d0);
+            border: none;
+
+            justify-content: flex-end;
+            cursor: pointer;
+            transition: 0.5s;
+            font-size: large;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+        }
+
+        button:hover {
+            /* box-shadow: 0 0 0 10px  black; */
+            transform: 0.5s;
+            box-shadow: 0px 0px 47px 1px rgba(0, 0, 0, 0.83);
+            -webkit-box-shadow: 0px 0px 47px 1px rgba(0, 0, 0, 0.83);
+            -moz-box-shadow: 0px 0 47px 1px rgba(0, 0, 0, 0.83);
+        }
+
+        .box-result {
+            justify-content: center;
+            display: flex;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px;
+            border: 2px solid;
+            padding: 10px;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        table tr td {
+            /* border: 2px solid black; */
+            padding: 10px;
+        }
+    </Style>
+
+    <script>
+        function getres() {
+            var a = parseInt(document.getElementById('Math').value);
+            var b = parseInt(document.getElementById('CS').value);
+            var c = parseInt(document.getElementById('Phy').value);
+            var d = parseInt(document.getElementById('Che').value);
+            var e = parseInt(document.getElementById('Stat').value);
+            if (a > 100 || b > 100 || c > 100 || d > 100 || e > 100) {
+                alert('Average mark 500');
+            }
+            else {
+                var Obt = a + b + c + d + e;
+                document.getElementById('obt').innerHTML = Obt;
+                var Aver = Obt / 5;
+                document.getElementById('avg').innerHTML = Aver;
+                var Pre = Obt / 500 * 100;
+                document.getElementById('per').innerHTML = Pre + "%";
+
+                if (Pre >= 100 && Pre >= 90) {
+                    document.getElementById('grand').innerHTML = 'A+';
+                }
+                else if (Pre <= 89 && Pre >= 80) {
+                    document.getElementById('grand').innerHTML = 'A';
+                }
+
+                else if (Pre <= 79 && Pre >= 70) {
+                    document.getElementById('grand').innerHTML = 'B+';
+                }
+
+                else if (Pre <= 69 && Pre >= 60) {
+                    document.getElementById('grand').innerHTML = 'B';
+                }
+
+                else if (Pre <= 59 && Pre >= 50) {
+                    document.getElementById('grand').innerHTML = 'C+';
+                }
+
+                else if (Pre <= 49 && Pre >= 40) {
+                    document.getElementById('grand').innerHTML = 'C';
+                }
+
+                else if (Pre <= 39 && Pre >= 30) {
+                    document.getElementById('grand').innerHTML = 'D+';
+                }
+                else if (Pre <= 30 && Pre > 0) {
+                    document.getElementById('grand').innerHTML = 'Fail';
+                }
+                // else{
+                //     document.getElementById('grand').innerHTML ='Fail';
+                // }
+
+
+            }
+
+        }
+    </script>
+
+
+
+</body>
+
+</html>
